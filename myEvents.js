@@ -111,6 +111,7 @@ function resetEverything(){
 	$("h1").html("jQuery Events");
 	$("h1").html("jQuery Events");
 	$("h1").removeClass("text-danger");
+	$("#charType").html("");
 
 	letters = 0;	
 	numbers = 0;
