@@ -48,6 +48,7 @@ $("#letra").keypress(function(key){
 	var whatChar = String.fromCharCode(key.which);
 	var key = key.which;
 
+	$("#whatKey").html(whatChar);
 	if (/[a-z]/.test(whatChar.toLowerCase())){
 		letters++;
 		$("#charType").html("Letter");
@@ -112,6 +113,7 @@ function resetEverything(){
 	$("h1").html("jQuery Events");
 	$("h1").removeClass("text-danger");
 	$("#charType").html("");
+	$("#whatKey").html("");
 
 	letters = 0;	
 	numbers = 0;
