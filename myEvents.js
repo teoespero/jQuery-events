@@ -8,18 +8,35 @@ var letters = 0;
 var numbers = 0;
 var specialChars = 0;
 
+showStats();
+
 $("h1").click(function(){
 	$(this).attr("class","text-danger");
 	$(this).html("This was clicked");
 });
 
-$("button").click(function(){
-	// $(this).css("background","red");
+$("#btn04").click(function(){
+
+	
+	// change the button class to DANGER
+	// unless the user clicks on the RESET button
+	resetEverything();
+	showStats();
+});
+
+
+$("button:not(#btn04)").click(function(){
+
+	
+	// change the button class to DANGER
+	// unless the user clicks on the RESET button
 	var btnID = $(this).attr("id");
+	
 	$(this).attr("class","btn btn-danger");
 	$(this).html(btnID + " was clicked");
 	btnID = null;
 });
+
 
 $("#letra").keypress(function(key){
 
@@ -28,12 +45,15 @@ $("#letra").keypress(function(key){
 
 	if (/[a-z]/.test(whatChar.toLowerCase())){
 		letters++;
+		$("#charType").html("Letter");
 	}
 	else if (/^\d+$/.test(whatChar)){
 		numbers++;
+		$("#charType").html("Number");
 	}
 	else {
 		specialChars++;
+		$("#charType").html("Special character");
 	}
 	
 	///////////////////////////////////////////////////////////	
@@ -68,7 +88,26 @@ $("#letra").keypress(function(key){
 	///////////////////////////////////////////////////////////
 
 	// show the stats
+	showStats();
+});
+
+function showStats(){
 	$("#letter").html(letters);
 	$("#number").html(numbers);
 	$("#special").html(specialChars);
-});
+}
+
+function resetEverything(){
+	$("button:not(#btn04)").attr("class","btn btn-default");
+	$("#letra").val("");
+	$("#btn01").html("Button 1");
+	$("#btn02").html("Button 2");
+	$("#btn03").html("Button 3");
+	$("h1").html("jQuery Events");
+	$("h1").html("jQuery Events");
+	$("h1").removeClass("text-danger");
+
+	letters = 0;	
+	numbers = 0;
+	specialChars = 0;
+}
